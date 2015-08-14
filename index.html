@@ -16,20 +16,19 @@ document.addEventListener("deviceready",function (){
 			var contacto=navigator.contacts.create();
 			contacto.displayName="Lis";
 			contacto.name= new ContactName();
-			contacto.name.giveName="Elizabeth";
+			contacto.name.givenName="Elizabeth";
 			contacto.name.familyName="Díaz Orea";
 			contacto.phoneNumbers=[];
-			contacto.phoneNumbers=new ContactField("work","276-1094052",true);
-			contacto.save(function(){alert("Contacto guardado correctamente");},function(error){
-				alert("Error: "+ error.code);});
+			contacto.phoneNumbers=new ContactField("work","276-109-4052",true);
+			contacto.save(function(){alert("Contacto guardado correctamente");},function(error){alert("Error: "+error.code);});
 			});
 			
 	$("#btnLista").tap(function(){
-		navigator.contacts.find(['*'],function(contactos){
-				var elemento=("#listContactos");
+		navigator.contacts.find(["*"],function(contactos){
+				var elemento=$("#listContactos");
 				for(i=0;i<contactos.length;i++){
 					var contacto=contactos[i];
-					elemento.append("<li> "+ contacto.displayName+"</li>");
+					elemento.append("<li>"+ contacto.displayName+"</li>");
 					}
 					elemento.listview('refresh');
 			},function(error){alert("No se a podidpo acceder a la lista de contactos: "+ error.code);
@@ -55,8 +54,7 @@ document.addEventListener("deviceready",function (){
         <input type="button" value="Agregar contacto" id="btnAgregar" />
         <input type="button" value="Mostrar Lista" id="btnLista"  />
         <ul data-role="listview" id="listContactos">
-        	<li> 
-        </ul>        
+        	  </ul>        
     </div>
     <div data-role="footer" data-position="fixed">
     	<p>Pie de aplicación</p>
